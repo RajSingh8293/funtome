@@ -91,6 +91,30 @@ const imageMap = {
   "虚・熱・湿": "./img/type_8.png",
 };
 
+// Start buttons
+document.getElementById("start-btn").addEventListener("click", (e) => {
+  e.preventDefault();
+  startQuiz();
+});
+
+document.getElementById("start-btn-2").addEventListener("click", (e) => {
+  e.preventDefault();
+  startQuiz();
+});
+
+function startQuiz() {
+  document.getElementById("start-q").style.display = "none";
+  document.getElementById("app-container").style.display = "block";
+  resetQuiz();
+  renderQuestion();
+}
+
+function resetQuiz() {
+  current = 0;
+  scores = { energy: 0, temp: 0, moist: 0 };
+  answers = new Array(15).fill(null);
+}
+
 function showValidationMessage(show = true) {
   const messageEl = document.getElementById("validation-message");
   if (show) {
@@ -104,10 +128,18 @@ function updateNavigationButtons() {
   const prevBtn = document.getElementById("prev-arrow");
   const nextBtn = document.getElementById("next-arrow");
 
-  prevBtn.classList.toggle("disabled", current === 0);
+  if (current === 0) {
+    prevBtn.classList.add("disabled");
+  } else {
+    prevBtn.classList.remove("disabled");
+  }
 
   const hasAnswer = answers[current] !== null;
-  nextBtn.classList.toggle("disabled", !hasAnswer);
+  if (!hasAnswer) {
+    nextBtn.classList.add("disabled");
+  } else {
+    nextBtn.classList.remove("disabled");
+  }
 
   if (hasAnswer) {
     showValidationMessage(false);
@@ -116,15 +148,26 @@ function updateNavigationButtons() {
 
 function updateProgress() {
   const answeredCount = answers.filter((a) => a !== null).length;
+  document.getElementById("q-count").innerText = answeredCount + 1;
   const percent = Math.round((answeredCount / 15) * 100);
-  document.getElementById("q-count").innerText = percent + "%";
   document.getElementById("progress-fill").style.width = percent + "%";
+  document.getElementById("q-number").innerText = current + 1;
 }
 
 function renderQuestion() {
   const q = questions[current];
   document.querySelector("#btn-a span").textContent = q.a;
   document.querySelector("#btn-b span").textContent = q.b;
+
+  // Set question title based on axis
+  if (q.axis === "energy") {
+    document.getElementById("question-title").textContent =
+      "エネルギーについて";
+  } else if (q.axis === "temp") {
+    document.getElementById("question-title").textContent = "体温について";
+  } else {
+    document.getElementById("question-title").textContent = "水分について";
+  }
 
   const btnA = document.getElementById("btn-a");
   const btnB = document.getElementById("btn-b");
@@ -146,17 +189,32 @@ function handleChoice(choice) {
   const previousAnswer = answers[current];
   const axis = questions[current].axis;
 
+  // Update answers and scores
   if (previousAnswer === choice) {
+    // Deselecting
     answers[current] = null;
-    scores[axis] += choice === "a" ? -1 : 1;
-  } else {
-    if (previousAnswer) {
-      scores[axis] += previousAnswer === "a" ? -1 : 1;
+    if (choice === "a") {
+      scores[axis] -= 1;
+    } else {
+      scores[axis] += 1;
     }
+  } else {
+    // Selecting new option
+    if (previousAnswer === "a") {
+      scores[axis] -= 1;
+    } else if (previousAnswer === "b") {
+      scores[axis] += 1;
+    }
+
     answers[current] = choice;
-    scores[axis] += choice === "a" ? 1 : -1;
+    if (choice === "a") {
+      scores[axis] += 1;
+    } else {
+      scores[axis] -= 1;
+    }
   }
 
+  // Update UI
   const btnA = document.getElementById("btn-a");
   const btnB = document.getElementById("btn-b");
 
@@ -166,14 +224,20 @@ function handleChoice(choice) {
   updateNavigationButtons();
   updateProgress();
 
-  if (previousAnswer !== choice && answers[current] !== null) {
+  // Auto-advance to next question if an option is selected
+  if (answers[current] !== null) {
     if (current < 14) {
+      // Move to next question after delay
       setTimeout(() => {
         current++;
         renderQuestion();
-      }, 300);
+      }, 500);
     } else if (current === 14) {
-      setTimeout(showResult, 300);
+      // Last question - check if all answered
+      const allAnswered = answers.every((answer) => answer !== null);
+      if (allAnswered) {
+        setTimeout(showResult, 500);
+      }
     }
   }
 }
@@ -215,18 +279,21 @@ function showResult() {
   const m = scores.moist >= 0 ? "湿" : "燥";
   const combination = `${e}・${t}・${m}`;
 
-  const imagePath = imageMap[combination] || "./images/type_1.webp";
+  const imagePath = imageMap[combination] || "./img/type_1.webp";
   document.getElementById("result-image").src = imagePath;
 }
 
-window.onload = () => {
-  document.getElementById("btn-a").onclick = () => handleChoice("a");
-  document.getElementById("btn-b").onclick = () => handleChoice("b");
-  document.getElementById("prev-arrow").onclick = goToPrev;
-  document.getElementById("next-arrow").onclick = goToNext;
+// Initialize quiz event listeners
+document.getElementById("btn-a").addEventListener("click", function () {
+  handleChoice("a");
+});
 
-  renderQuestion();
-};
+document.getElementById("btn-b").addEventListener("click", function () {
+  handleChoice("b");
+});
+
+document.getElementById("prev-arrow").addEventListener("click", goToPrev);
+document.getElementById("next-arrow").addEventListener("click", goToNext);
 
 const products = [
   {
@@ -260,13 +327,13 @@ const cardsContainer = document.getElementById("productCards");
 cardsContainer.innerHTML = products
   .map(
     (product) => `
-        <div class="card">
-          <div class="images">
-            <img src="${product.image1}" alt="${product.title}">
-            <img src="${product.image2}" alt="${product.title}">
-          </div>
-          <p>${product.title}</p>
-        </div>
-      `,
+            <div class="card">
+              <div class="images">
+                <img src="${product.image1}" alt="${product.title}">
+                <img src="${product.image2}" alt="${product.title}">
+              </div>
+              <p>${product.title}</p>
+            </div>
+          `,
   )
   .join("");
