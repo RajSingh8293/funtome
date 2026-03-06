@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+      <div class="loader"></div>
+    </div>
+
+    <!-- Top promotion bar -->
+    <div class="promo-bar">
+      <img src="./img/top_header.jpg" alt="" />
+    </div>
+
+    <!-- Main header -->
+    <header>
+      <div class="main-header">
+        <div class="logo-section">
+          <a href="" class="kracie-logo">
+            <img src="./img/logo.png" alt="" />
+          </a>
+          <div class="search-box-1">
+            <div class="search-bar">
+              <input
+                type="search"
+                name="keyword"
+                placeholder="何かお探しですか"
+              />
+              <img src="./img/ico_search.png" alt="" />
+            </div>
+            <div class="badges">
+              <span>花粉症 </span>
+              <span>シミ</span>
+              <span>睡眠の質</span>
+              <span>肥満</span>
+              <span>定期</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="icon-section">
+          <a href="#" class="icon-item">
+            <img src="./img/ico_login.png" alt="" />
+            <span>ログイン・新規登録</span>
+          </a>
+          <a href="#" class="icon-item">
+            <img src="./img/ico_heart.png" class="icon-heart" alt="" />
+            <span>お気に入り</span>
+          </a>
+          <a href="#" class="icon-item">
+            <img src="./img/ico_guide.png" class="icon-guide" alt="" />
+            <span>ご利用ガイド</span>
+          </a>
+          <a href="#" class="icon-item">
+            <img src="./img/ico_basket.png" class="icon-cart" alt="" />
+            <span>カート</span>
+          </a>
+        </div>
+        <div class="mobile-menu">
+          <div class="search-icon" id="search-icon">
+            <img src="./img/ico_search.png" alt="" />
+          </div>
+          <button class="mobile-menu-toggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="search-box-2" id="search-box-2">
+        <div class="search-bar">
+          <input type="search" name="keyword" placeholder="何かお探しですか" />
+          <img src="./img/ico_search.png" alt="" />
+        </div>
+        <div class="badges">
+          <span>花粉症 </span>
+          <span>シミ</span>
+          <span>睡眠の質</span>
+          <span>肥満</span>
+          <span>定期</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="#" class="nav-item dropdown"
+          >症状から探す <i class="fa fa-chevron-down" aria-hidden="true"></i
+        ></a>
+        <a href="#" class="nav-item dropdown"
+          >医薬品から探す <i class="fa fa-chevron-down" aria-hidden="true"></i
+        ></a>
+        <a href="#" class="nav-item">食品を探す</a>
+        <a href="#" class="nav-item">特集・キャンペーン</a>
+        <a href="#" class="nav-item dropdown">クラシエの漢方診断</a>
+      </nav>
+    </header>
+
+    <!-- Sidebar Menu -->
+    <div class="sidebar-menu">
+      <!-- Sidebar Header -->
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <img src="./img/logo.png" alt="Kracie Logo" />
+        </div>
+        <button class="sidebar-close" aria-label="Close">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M18 6L6 18M6 6L18 18"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <div class="sidebar-user">
+        <div class="user-avatar">
+          <img src="./img/ico_login.png" alt="User" />
+        </div>
+        <div class="user-info">
+          <span class="user-greeting">ようこそ</span>
+          <a href="#" class="user-login">ログイン・新規登録</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Navigation -->
+      <nav class="sidebar-nav">
+        <div class="sidebar-nav-group">
+          <h3 class="sidebar-nav-title">カテゴリー</h3>
+          <a href="#" class="sidebar-nav-item">
+            <span>症状から探す</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M6 12L10 8L6 4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </a>
+          <a href="#" class="sidebar-nav-item">
+            <span>医薬品から探す</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M6 12L10 8L6 4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </a>
+          <a href="#" class="sidebar-nav-item">
+            <span>食品を探す</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M6 12L10 8L6 4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </a>
+          <a href="#" class="sidebar-nav-item">
+            <span>特集・キャンペーン</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M6 12L10 8L6 4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </a>
+          <a href="#" class="sidebar-nav-item">
+            <span>クラシエの漢方診断</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M6 12L10 8L6 4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </a>
+        </div>
+
+        <div class="sidebar-nav-group">
+          <h3 class="sidebar-nav-title">マイページ</h3>
+          <a href="#" class="sidebar-nav-item">
+            <img src="./img/ico_heart.png" alt="" class="sidebar-item-icon" />
+            <span>お気に入り</span>
+          </a>
+          <a href="#" class="sidebar-nav-item">
+            <img src="./img/ico_guide.png" alt="" class="sidebar-item-icon" />
+            <span>ご利用ガイド</span>
+          </a>
+          <a href="#" class="sidebar-nav-item">
+            <img src="./img/ico_basket.png" alt="" class="sidebar-item-icon" />
+            <span>カート</span>
+            <span class="sidebar-badge">3</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Popular Tags -->
+      <div class="sidebar-tags">
+        <h3 class="sidebar-tags-title">人気のキーワード</h3>
+        <div class="tags-container">
+          <span class="tag">花粉症</span>
+          <span class="tag">シミ</span>
+          <span class="tag">睡眠の質</span>
+          <span class="tag">肥満</span>
+          <span class="tag">定期</span>
+          <span class="tag">冷え性</span>
+          <span class="tag">更年期</span>
+          <span class="tag">漢方</span>
+        </div>
+      </div>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <a href="#" class="footer-link">会社情報</a>
+        <a href="#" class="footer-link">プライバシーポリシー</a>
+        <a href="#" class="footer-link">お問い合わせ</a>
+      </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="sidebar-overlay"></div>
+
+    <div class="fluid-container">
+      <div id="start-q">
+        <div class="hero-container">
+          <div class="hero-container-detail">
+            <img src="./img/lets-check_img.webp" alt="" />
+            <h1>
+              15の質問に答えて <br />
+              あなたのバランス状態をチェック
+            </h1>
+            <p>
+              漢方理論と世界の伝統療法を融合させ定義した <br />
+              クラシエのオリジナルチェック
+            </p>
+            <a href="#" class="btn-2" id="start-btn"> はじめる </a>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="custom-content">
+            <div class="custom-content-item">
+              <h1>バランス状態って何?</h1>
+              <p class="message">
+                漢方理論と世界の伝統療法を融合させて定義した、独自の「虚-実、寒-熱、湿-燥」の3軸・6要素の組み合わせで個々の状態をバランスタイプ(8分類)に判定。
+                <br />
+                過不足や滞りのないバランスのとれた「中庸」に整えることを目指して
+                あなたに合った商品やセルフケアを提案します。
+              </p>
+              <p class="custom-content-types">＊（例）実・寒・湿タイプなど</p>
+            </div>
+            <div class="custom-content-img">
+              <img src="./img/balance-result-img.webp" alt="" />
+            </div>
+          </div>
+
+          <div class="table-container">
+            <h1>Fun To Me が提唱する6要素の定義</h1>
+
+            <table class="types-table">
+              <tbody>
+                <tr>
+                  <td class="table-types" data-label="タイプ">
+                    <span class="count">1</span>
+                    実タイプ：溜め込み傾向
+                  </td>
+                  <td data-label="状態">
+                    食エネルギー過剰、緊張やストレスが多い環境
+                  </td>
+                </tr>
+                <tr>
+                  <td class="table-types" data-label="タイプ">
+                    <span class="count">2</span>
+                    虚タイプ：未充足傾向
+                  </td>
+                  <td data-label="状態">食エネルギー不足、気力を維持したい</td>
+                </tr>
+                <tr>
+                  <td class="table-types" data-label="タイプ">
+                    <span class="count">3</span>
+                    寒タイプ：寒性傾向
+                  </td>
+                  <td data-label="状態">寒がり、夏でも温かいものが好き</td>
+                </tr>
+                <tr>
+                  <td class="table-types" data-label="タイプ">
+                    <span class="count">4</span>
+                    熱タイプ：熱性傾向
+                  </td>
+                  <td data-label="状態">暑がり、冬でも冷たいものが好き</td>
+                </tr>
+                <tr>
+                  <td class="table-types" data-label="タイプ">
+                    <span class="count">5</span>
+                    湿タイプ：湿性傾向
+                  </td>
+                  <td data-label="狀態">
+                    水の巡りがよくない、水分バランスが過剰
+                  </td>
+                </tr>
+                <tr>
+                  <td class="table-types" data-label="タイプ">
+                    <span class="count">6</span>
+                    燥タイプ：燥性傾向
+                  </td>
+                  <td data-label="状態">水分不足、乾燥状態、喉が渇きやすい</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p class="table-bottom-content">
+              <span class="table-content-types">実↔虚、寒↔熱、湿↔燥は</span
+              >、それぞれ反対の性質で、どちらかに偏りすぎるとカラダやココロに不調が起きると考えられます。
+            </p>
+            <p class="table-bottom-content">
+              また、3つの軸は、どれか1つではなく、それぞれに影響し合っているため、
+              <br />
+              バランス状態3軸の組合せを把握することが重要であると考えています。
+            </p>
+            <div class="start-btn">
+              <a href="#" class="btn-2" id="start-btn-2"> はじめる </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="app-container" style="display: none">
+        <div id="quiz-ui">
+          <div class="container">
+            <div class="balancecheck_q_img">
+              <img
+                src="./img/balancecheck_question_img.webp"
+                alt="question decorative"
+              />
+            </div>
+            <div class="balance-check-des">
+              <p>
+                バランス状態は季節や環境で変化するので、定期的にチェックしましょう
+              </p>
+              <div class="q-count-number">
+                <div class="q-circle">
+                  <span>Q</span>
+                  <span class="q-number" id="q-number">1</span>
+                </div>
+                <h1 id="question-title">最近の気分は?</h1>
+              </div>
+            </div>
+
+            <div class="balancecheck_q_btns">
+              <button class="option-btn" id="btn-a"><span></span></button>
+              <button class="option-btn" id="btn-b"><span></span></button>
+            </div>
+            <div class="validation-message" id="validation-message">
+              ⚠️ 次の質問に進むには選択が必要です
+            </div>
+          </div>
+          <div class="progress-container">
+            <div class="progress-row">
+              <div class="progress-left">
+                <div class="answer-progress" id="answer-progress">
+                  <span class="question-number" id="current-question">1</span>
+                  <span class="progress-separator">/</span>
+                  <span class="total-questions">15</span>
+                  <span class="progress-label">問目</span>
+                </div>
+                <div class="nav-container">
+                  <button class="prev" id="prev-arrow">1つもどる</button>
+                  <button class="next" id="next-arrow">はじめにもどる</button>
+                </div>
+              </div>
+              <div class="progress-bar"><div id="progress-fill"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fluid-container">
+      <div id="result-ui" class="result-ui" style="display: none">
+        <div class="result-container">
+          <div class="result-img">
+            <img id="result-image" src="" alt="診断結果画像" />
+          </div>
+          <div class="chat-container">
+            <div class="type-badge">
+              <span class="type-item">実</span>
+              <span class="type-item">熱</span>
+              <span class="type-item">燥</span>
+              <span class="type-item">タイプ</span>
+            </div>
+            <img src="./img/advice-for-you.webp" alt="Profile" />
+
+            <div class="message-container">
+              <div class="message-bubble">
+                <h2 class="message-text">
+                  自律神経の調整不良により体の機能が低下して、<br />
+                  余分な水分が溜まりやすくなったタイプ
+                </h2>
+                <p>
+                  甘いものを控え、血液の流れをよくし、余分な水分を除く働きのある食材をとりましょう。<br />
+                  自律神経を整えるGABA、トリプトファンやビタミンD、血行改善と女性ホルモン様作用があるといわれるフェンネルや八角、水を巡らせるハトムギもおすすめです。
+                  ウォーキングのような持久性の高い運動で、自律神経を整え、代謝をよくしましょう。
+                  また、入浴やハーブティなどでリラックスし、夜は早めに寝て睡眠時間を十分に確保しましょう。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add FantoMe brand page button -->
+        <a href="#" class="brand-page-btn" id="brand-page-btn">
+          FantoMe ブランドページへ
+        </a>
+
+        <div class="related-products">
+          <div class="related-heading">
+            <h1>おすすめ商品</h1>
+          </div>
+          <div class="cards" id="productCards"></div>
+        </div>
+
+        <div class="restart-container">
+          <button class="btn" id="restart-quiz">
+            <i class="fa fa-repeat" aria-hidden="true"></i>
+            <span>はじめからやり直す</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-top">
+        <button class="btn">お問い合わせはこちらから</button>
+        <p>
+          弊社からの返信は、10：00〜17：00 <br />
+          （⼟・⽇・祝⽇・年末年始を除く） となります。
+        </p>
+      </div>
+
+      <div class="fluid-container">
+        <div class="footer-boxes">
+          <div class="box">
+            <h1>お届けについて</h1>
+            <h2>
+              原則、ご注文の翌営業日（土、日、祝、弊社休業日を除く）に発送いたします。発送後のお届け所要日数はご住所により異なりますが、翌日～1週間程度です。宅配便をご選択いただき日時指定をしていただいた場合は、ご指定をいただいた期日に商品をお届けします。
+            </h2>
+            <h2>
+              ※離島や一部地域などでは運送業者の都合により、日時指定を承れない場合がございます。
+            </h2>
+          </div>
+
+          <div class="box">
+            <h1>送料について</h1>
+            <h2>
+              全国一律220円（税込）です。なお、3,900円（税込）以上ご購入された場合は送料無料でお届けいたします。
+            </h2>
+            <h2>
+              ※メール便から宅配便にご変更の場合、宅配変更手数料として＋330円（税込）が発生いたします。
+            </h2>
+          </div>
+
+          <div class="box">
+            <h1>お⽀払いについて</h1>
+            <h2>
+              お⽀払いには、クレジットカード、コンビニ前払い、代⾦引換がご利⽤いただけます。
+            </h2>
+            <h2>
+              ※離島や一部地域などでは運送業者の都合により、代金引換でのお支払をご利用頂けない場合がございます。
+            </h2>
+          </div>
+
+          <div class="box">
+            <h1>返品・交換について</h1>
+            <h2>
+              キャンセルは、原則としてお受けしておりませんので、ご了承下さい。返品交換については、不良品および品物違いの場合に限り、お受けしております。商品到着後7⽇以内に、お問い合わせ窓⼝までご連絡ください。商品不良・品物違い等、当店不備による返品の場合は、当店にて送料負担いたします。
+            </h2>
+            <h2>
+              ※期限を過ぎると返品交換を承れない場合がございますので、ご注意ください。※お客様都合による理由や梱包が開封された商品の返品、交換はお受けできませんので、ご了承ください。※お問い合わせをいただく際は、注文番号、お名前、返品交換の理由をご連絡ください。
+            </h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-medile">
+        <div class="links-container">
+          <div class="links">
+            <h1>ご利用ガイド</h1>
+            <ul>
+              <li>会員登録について</li>
+              <li>お支払い方法について</li>
+              <li>送料・配送について</li>
+              <li>返品・交換について</li>
+              <li>よくあるご質問について</li>
+              <li>ご利用にあたって</li>
+            </ul>
+          </div>
+          <div class="links">
+            <h1>会社情報</h1>
+            <ul>
+              <li>会社案内</li>
+              <li>会員規約</li>
+              <li>Kampoful life会員サービス</li>
+              <li>特定商取引法に基づく表⽰</li>
+            </ul>
+          </div>
+          <div class="links">
+            <h1>その他</h1>
+            <ul>
+              <li>医薬品の販売について</li>
+              <li>ご利⽤ガイド</li>
+              <li>よくあるご質問</li>
+              <li>お問い合わせ</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-logos">
+          <a href="">
+            <img src="./img/kracie_logo.png" alt="" />
+          </a>
+          <a href="">
+            <img src="./img/kampoful_Life_logo.png" alt="" />
+          </a>
+        </div>
+
+        <div class="footer-app-store">
+          <h1>「クラシエの漢方 2.0」アプリダウンロードはこちらから</h1>
+          <div class="app-store">
+            <a href="">
+              <img src="./img/banner_app_store.png" alt="" />
+            </a>
+            <a href="">
+              <img src="./img/banner_google_play.png" alt="" />
+            </a>
+          </div>
+
+          <div class="phone-pc-icons">
+            <a href="">
+              <i class="fas fa-mobile-alt"></i>
+              <span>スマートフォン</span>
+            </a>
+            <a href="">
+              <i class="fa fa-desktop"></i>
+              <span>PC</span>
+            </a>
+          </div>
+
+          <div class="footer-bottom">
+            <div>
+              <a href=""
+                >個人情報保護方針
+                <img src="./img/ico_out_link_black.png" alt=""
+              /></a>
+              <a href="">特定商取引法に基づく表示</a>
+              <a href=""
+                >このサイトについて
+                <img src="./img/ico_out_link_black.png" alt=""
+              /></a>
+              <a href=""
+                >ソーシャルメディアポリシー
+                <img src="./img/ico_out_link_black.png" alt=""
+              /></a>
+              <a href="">ソーシャルメディア規約</a>
+            </div>
+
+            <p>Copyright © Kracie,Ltd. All Rights Reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div class="go-top">
+      <button id="goTopBtn" aria-label="Go to top">
+        <i class="fa fa-angle-up" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <script src="./js/script.js"></script>
+  </body>
+</html>
