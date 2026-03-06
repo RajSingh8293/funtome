@@ -361,7 +361,7 @@
               <div class="q-count-number">
                 <div class="q-circle">
                   <span>Q</span>
-                  <span class="q-number" id="q-number">0</span>
+                  <span class="q-number" id="q-number">1</span>
                 </div>
                 <h1 id="question-title">最近の気分は?</h1>
               </div>
@@ -378,9 +378,11 @@
           <div class="progress-container">
             <div class="progress-row">
               <div class="progress-left">
-                <div class="count">
-                  <span id="q-count">1</span>
-                  <span>/ 15</span>
+                <div class="answer-progress" id="answer-progress">
+                  <span class="question-number" id="current-question">1</span>
+                  <span class="progress-separator">/</span>
+                  <span class="total-questions">15</span>
+                  <span class="progress-label">問目</span>
                 </div>
                 <div class="nav-container">
                   <button class="prev" id="prev-arrow">1つもどる</button>
@@ -425,6 +427,11 @@
             </div>
           </div>
         </div>
+
+        <!-- Add FantoMe brand page button -->
+        <a href="#" class="brand-page-btn" id="brand-page-btn">
+          FantoMe ブランドページへ
+        </a>
 
         <div class="related-products">
           <div class="related-heading">
@@ -588,6 +595,7 @@
         <i class="fa fa-angle-up" aria-hidden="true"></i>
       </button>
     </div>
+
     <script src="./js/script.js"></script>
   </body>
 </html>

@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const goTopContainer = document.querySelector(".go-top");
 
   if (goTopBtn && goTopContainer) {
-    // Show/hide button based on scroll position
     window.addEventListener("scroll", function () {
       if (window.scrollY > 300) {
         goTopContainer.classList.add("show");
@@ -30,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 300);
     });
 
-    // hover effect with animation
+    // Hover effect with animation
     goTopBtn.addEventListener("mouseenter", function () {
       this.style.animation = "bounce 1s ease infinite";
     });
@@ -39,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
       this.style.animation = "none";
     });
   }
+
   // ========== SEARCH FUNCTIONALITY ==========
   const searchIcon = document.getElementById("search-icon");
   const searchBox2 = document.getElementById("search-box-2");
@@ -284,6 +284,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const resultImage = document.getElementById("result-image");
   const typeBadge = document.querySelector(".type-badge");
   const pageLoader = document.getElementById("pageLoader");
+  const answerProgress = document.getElementById("answer-progress");
+  const currentQuestion = document.getElementById("current-question");
 
   if (pageLoader) {
     setTimeout(function () {
@@ -313,7 +315,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function startQuiz() {
-    // Scroll to top when starting quiz
     setTimeout(() => {
       scrollToTop();
     }, 100);
@@ -325,7 +326,6 @@ document.addEventListener("DOMContentLoaded", function () {
       resultUI.classList.remove("show");
     }
 
-    // Make sure quiz UI is visible
     if (quizUI) {
       quizUI.style.display = "block";
     }
@@ -346,7 +346,6 @@ document.addEventListener("DOMContentLoaded", function () {
       resultUI.classList.remove("show");
     }
 
-    // Make sure start screen is hidden
     if (startQ) startQ.style.display = "none";
 
     // Show quiz container
@@ -354,7 +353,6 @@ document.addEventListener("DOMContentLoaded", function () {
       appContainer.style.display = "block";
     }
 
-    // Make sure quiz UI is visible
     if (quizUI) {
       quizUI.style.display = "block";
       quizUI.classList.remove("fade-out", "fade-in", "slide-out", "slide-in");
@@ -375,11 +373,10 @@ document.addEventListener("DOMContentLoaded", function () {
     answers = new Array(15).fill(null);
 
     // Reset the display counts to show 1/15
-    if (qCount) qCount.innerText = "1";
     if (qNumber) qNumber.innerText = "1";
+    if (currentQuestion) currentQuestion.innerText = "1";
     if (progressFill) progressFill.style.width = "0%";
 
-    // Remove selected states from buttons
     if (btnA) btnA.classList.remove("selected");
     if (btnB) btnB.classList.remove("selected");
   }
@@ -419,7 +416,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const answeredCount = answers.filter((a) => a !== null).length;
 
     // Show current question number (1-15)
-    if (qCount) qCount.innerText = current + 1;
     if (qNumber) {
       qNumber.innerText = current + 1;
       qNumber.classList.add("change");
@@ -427,6 +423,7 @@ document.addEventListener("DOMContentLoaded", function () {
         qNumber.classList.remove("change");
       }, 200);
     }
+    if (currentQuestion) currentQuestion.innerText = current + 1;
 
     if (progressFill) {
       const percent = Math.round((answeredCount / 15) * 100);
@@ -467,7 +464,6 @@ document.addEventListener("DOMContentLoaded", function () {
     updateNavigationButtons();
     updateProgress();
 
-    // Scroll to top when question changes
     setTimeout(() => {
       scrollToTop();
     }, 100);
@@ -509,24 +505,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (answers[current] !== null) {
       if (current < 14) {
-        // Add animation
-        if (quizUI) {
-          quizUI.classList.add("fade-out");
-          setTimeout(() => {
-            current++;
-            renderQuestion();
-            quizUI.classList.remove("fade-out");
-            quizUI.classList.add("fade-in");
-            setTimeout(() => {
-              quizUI.classList.remove("fade-in");
-            }, 300);
-          }, 200);
-        } else {
-          current++;
-          renderQuestion();
-        }
+        current++;
+        renderQuestion();
       } else if (current === 14 && allAnswered) {
-        setTimeout(showResult, 500);
+        showResult();
       }
     }
   }
@@ -538,23 +520,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (current < 14) {
-      if (quizUI) {
-        quizUI.classList.add("fade-out");
-        setTimeout(() => {
-          current++;
-          renderQuestion();
-          quizUI.classList.remove("fade-out");
-          quizUI.classList.add("fade-in");
-          setTimeout(() => {
-            quizUI.classList.remove("fade-in");
-          }, 300);
-          showValidationMessage(false);
-        }, 200);
-      } else {
-        current++;
-        renderQuestion();
-        showValidationMessage(false);
-      }
+      current++;
+      renderQuestion();
+      showValidationMessage(false);
     } else if (current === 14) {
       const allAnswered = answers.every((answer) => answer !== null);
       if (allAnswered) {
@@ -567,28 +535,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function goToPrev() {
     if (current > 0) {
-      if (quizUI) {
-        quizUI.classList.add("slide-out");
-        setTimeout(() => {
-          current--;
-          renderQuestion();
-          quizUI.classList.remove("slide-out");
-          quizUI.classList.add("slide-in");
-          setTimeout(() => {
-            quizUI.classList.remove("slide-in");
-          }, 300);
-          showValidationMessage(false);
-        }, 200);
-      } else {
-        current--;
-        renderQuestion();
-        showValidationMessage(false);
-      }
+      current--;
+      renderQuestion();
+      showValidationMessage(false);
     }
   }
-
   function showResult() {
-    // Scroll to top when showing results
     setTimeout(() => {
       scrollToTop();
     }, 100);
@@ -608,7 +560,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const combination = `${e}・${t}・${m}`;
 
-    // Update type badges
     if (typeBadge) {
       typeBadge.innerHTML = `
           <span class="type-item">${e}</span>
@@ -618,7 +569,6 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
     }
 
-    // Update result image
     if (resultImage) {
       const imagePath = imageMap[combination] || "./img/type_1.webp";
       resultImage.src = imagePath;
