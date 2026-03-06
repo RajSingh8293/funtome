@@ -14,6 +14,11 @@
     />
   </head>
   <body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+      <div class="loader"></div>
+    </div>
+
     <!-- Top promotion bar -->
     <div class="promo-bar">
       <img src="./img/top_header.jpg" alt="" />
@@ -23,25 +28,28 @@
     <header>
       <div class="main-header">
         <div class="logo-section">
-          <div class="kracie-logo"><img src="./img/logo.png" alt="" /></div>
-        </div>
-        <div class="search-box">
-          <div class="search-bar">
-            <input
-              type="search"
-              name="keyword"
-              placeholder="何かお探しですか"
-            />
-            <img src="./img/ico_search.png" alt="" />
+          <a href="" class="kracie-logo">
+            <img src="./img/logo.png" alt="" />
+          </a>
+          <div class="search-box-1">
+            <div class="search-bar">
+              <input
+                type="search"
+                name="keyword"
+                placeholder="何かお探しですか"
+              />
+              <img src="./img/ico_search.png" alt="" />
+            </div>
+            <div class="badges">
+              <span>花粉症 </span>
+              <span>シミ</span>
+              <span>睡眠の質</span>
+              <span>肥満</span>
+              <span>定期</span>
+            </div>
           </div>
-          <div class="badges">
-            <span>花粉症 </span>
-            <span>シミ</span>
-            <span>睡眠の質</span>
-            <span>肥満</span>
-            <span>定期</span>
-          </div>
         </div>
+
         <div class="icon-section">
           <a href="#" class="icon-item">
             <img src="./img/ico_login.png" alt="" />
@@ -60,6 +68,30 @@
             <span>カート</span>
           </a>
         </div>
+        <div class="mobile-menu">
+          <div class="search-icon" id="search-icon">
+            <img src="./img/ico_search.png" alt="" />
+          </div>
+          <button class="mobile-menu-toggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="search-box-2" id="search-box-2">
+        <div class="search-bar">
+          <input type="search" name="keyword" placeholder="何かお探しですか" />
+          <img src="./img/ico_search.png" alt="" />
+        </div>
+        <div class="badges">
+          <span>花粉症 </span>
+          <span>シミ</span>
+          <span>睡眠の質</span>
+          <span>肥満</span>
+          <span>定期</span>
+        </div>
       </div>
 
       <nav class="nav-menu">
@@ -74,6 +106,140 @@
         <a href="#" class="nav-item dropdown">クラシエの漢方診断</a>
       </nav>
     </header>
+
+    <!-- Sidebar Menu -->
+    <div class="sidebar-menu">
+      <!-- Sidebar Header -->
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <img src="./img/logo.png" alt="Kracie Logo" />
+        </div>
+        <button class="sidebar-close" aria-label="Close">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M18 6L6 18M6 6L18 18"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <div class="sidebar-user">
+        <div class="user-avatar">
+          <img src="./img/ico_login.png" alt="User" />
+        </div>
+        <div class="user-info">
+          <span class="user-greeting">ようこそ</span>
+          <a href="#" class="user-login">ログイン・新規登録</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Navigation -->
+      <nav class="sidebar-nav">
+        <div class="sidebar-nav-group">
+          <h3 class="sidebar-nav-title">カテゴリー</h3>
+          <a href="#" class="sidebar-nav-item">
+            <span>症状から探す</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M6 12L10 8L6 4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </a>
+          <a href="#" class="sidebar-nav-item">
+            <span>医薬品から探す</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M6 12L10 8L6 4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </a>
+          <a href="#" class="sidebar-nav-item">
+            <span>食品を探す</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M6 12L10 8L6 4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </a>
+          <a href="#" class="sidebar-nav-item">
+            <span>特集・キャンペーン</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M6 12L10 8L6 4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </a>
+          <a href="#" class="sidebar-nav-item">
+            <span>クラシエの漢方診断</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M6 12L10 8L6 4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </a>
+        </div>
+
+        <div class="sidebar-nav-group">
+          <h3 class="sidebar-nav-title">マイページ</h3>
+          <a href="#" class="sidebar-nav-item">
+            <img src="./img/ico_heart.png" alt="" class="sidebar-item-icon" />
+            <span>お気に入り</span>
+          </a>
+          <a href="#" class="sidebar-nav-item">
+            <img src="./img/ico_guide.png" alt="" class="sidebar-item-icon" />
+            <span>ご利用ガイド</span>
+          </a>
+          <a href="#" class="sidebar-nav-item">
+            <img src="./img/ico_basket.png" alt="" class="sidebar-item-icon" />
+            <span>カート</span>
+            <span class="sidebar-badge">3</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Popular Tags -->
+      <div class="sidebar-tags">
+        <h3 class="sidebar-tags-title">人気のキーワード</h3>
+        <div class="tags-container">
+          <span class="tag">花粉症</span>
+          <span class="tag">シミ</span>
+          <span class="tag">睡眠の質</span>
+          <span class="tag">肥満</span>
+          <span class="tag">定期</span>
+          <span class="tag">冷え性</span>
+          <span class="tag">更年期</span>
+          <span class="tag">漢方</span>
+        </div>
+      </div>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <a href="#" class="footer-link">会社情報</a>
+        <a href="#" class="footer-link">プライバシーポリシー</a>
+        <a href="#" class="footer-link">お問い合わせ</a>
+      </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="sidebar-overlay"></div>
 
     <div class="fluid-container">
       <div id="start-q">
@@ -195,7 +361,7 @@
               <div class="q-count-number">
                 <div class="q-circle">
                   <span>Q</span>
-                  <span class="q-number" id="q-number">1</span>
+                  <span class="q-number" id="q-number">0</span>
                 </div>
                 <h1 id="question-title">最近の気分は?</h1>
               </div>
@@ -214,7 +380,7 @@
               <div class="progress-left">
                 <div class="count">
                   <span id="q-count">1</span>
-                  <span>/ 15 問目</span>
+                  <span>/ 15</span>
                 </div>
                 <div class="nav-container">
                   <button class="prev" id="prev-arrow">1つもどる</button>
@@ -235,6 +401,12 @@
             <img id="result-image" src="" alt="診断結果画像" />
           </div>
           <div class="chat-container">
+            <div class="type-badge">
+              <span class="type-item">実</span>
+              <span class="type-item">熱</span>
+              <span class="type-item">燥</span>
+              <span class="type-item">タイプ</span>
+            </div>
             <img src="./img/advice-for-you.webp" alt="Profile" />
 
             <div class="message-container">
@@ -262,7 +434,7 @@
         </div>
 
         <div class="restart-container">
-          <button class="btn" onclick="location.reload()">
+          <button class="btn" id="restart-quiz">
             <i class="fa fa-repeat" aria-hidden="true"></i>
             <span>はじめからやり直す</span>
           </button>
@@ -411,6 +583,11 @@
       </div>
     </footer>
 
+    <div class="go-top">
+      <button id="goTopBtn" aria-label="Go to top">
+        <i class="fa fa-angle-up" aria-hidden="true"></i>
+      </button>
+    </div>
     <script src="./js/script.js"></script>
   </body>
 </html>
