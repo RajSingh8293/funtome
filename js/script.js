@@ -335,12 +335,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function restartQuizFromResult() {
-    // Scroll to top
     setTimeout(() => {
       scrollToTop();
     }, 100);
 
-    // Hide result screen
     if (resultUI) {
       resultUI.style.display = "none";
       resultUI.classList.remove("show");
@@ -348,7 +346,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (startQ) startQ.style.display = "none";
 
-    // Show quiz container
     if (appContainer) {
       appContainer.style.display = "block";
     }
@@ -358,10 +355,7 @@ document.addEventListener("DOMContentLoaded", function () {
       quizUI.classList.remove("fade-out", "fade-in", "slide-out", "slide-in");
     }
 
-    // Reset all quiz data
     resetQuiz();
-
-    // Render the first question
     renderQuestion();
 
     console.log("Quiz restarted from result screen - starting from question 1");
@@ -372,13 +366,14 @@ document.addEventListener("DOMContentLoaded", function () {
     scores = { energy: 0, temp: 0, moist: 0 };
     answers = new Array(15).fill(null);
 
-    // Reset the display counts to show 1/15
     if (qNumber) qNumber.innerText = "1";
     if (currentQuestion) currentQuestion.innerText = "1";
     if (progressFill) progressFill.style.width = "0%";
 
     if (btnA) btnA.classList.remove("selected");
     if (btnB) btnB.classList.remove("selected");
+
+    updateNavigationButtons();
   }
 
   function showValidationMessage(show = true) {
@@ -394,17 +389,24 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateNavigationButtons() {
     if (!prevArrow || !nextArrow) return;
 
+    console.log("Current question:", current);
+    console.log("Answer for current question:", answers[current]);
+
     if (current === 0) {
       prevArrow.classList.add("disabled");
+      console.log("Prev button disabled - first question");
     } else {
       prevArrow.classList.remove("disabled");
+      console.log("Prev button enabled - can go back");
     }
 
     const hasAnswer = answers[current] !== null;
     if (!hasAnswer) {
       nextArrow.classList.add("disabled");
+      console.log("Next button disabled - no answer");
     } else {
       nextArrow.classList.remove("disabled");
+      console.log("Next button enabled - has answer");
     }
 
     if (hasAnswer) {
@@ -415,7 +417,6 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateProgress() {
     const answeredCount = answers.filter((a) => a !== null).length;
 
-    // Show current question number (1-15)
     if (qNumber) {
       qNumber.innerText = current + 1;
       qNumber.classList.add("change");
@@ -463,10 +464,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     updateNavigationButtons();
     updateProgress();
-
-    setTimeout(() => {
-      scrollToTop();
-    }, 100);
   }
 
   function handleChoice(choice) {
@@ -503,13 +500,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const allAnswered = answers.every((answer) => answer !== null);
 
-    if (answers[current] !== null) {
-      if (current < 14) {
-        current++;
-        renderQuestion();
-      } else if (current === 14 && allAnswered) {
-        showResult();
-      }
+    if (answers[current] !== null && current < 14) {
+      current++;
+      renderQuestion();
+    } else if (current === 14 && allAnswered) {
+      showResult();
     }
   }
 
@@ -540,6 +535,7 @@ document.addEventListener("DOMContentLoaded", function () {
       showValidationMessage(false);
     }
   }
+
   function showResult() {
     setTimeout(() => {
       scrollToTop();
@@ -553,7 +549,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 50);
     }
 
-    // Calculate result
     const e = scores.energy > 0 ? "実" : scores.energy < 0 ? "虚" : "実";
     const t = scores.temp > 0 ? "寒" : scores.temp < 0 ? "熱" : "熱";
     const m = scores.moist > 0 ? "湿" : scores.moist < 0 ? "燥" : "湿";
@@ -562,11 +557,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (typeBadge) {
       typeBadge.innerHTML = `
-          <span class="type-item">${e}</span>
-          <span class="type-item">${t}</span>
-          <span class="type-item">${m}</span>
-          <span class="type-item">タイプ</span>
-        `;
+      <span class="type-item">${e}</span>
+      <span class="type-item">${t}</span>
+      <span class="type-item">${m}</span>
+      <span class="type-item">タイプ</span>
+    `;
     }
 
     if (resultImage) {
@@ -634,14 +629,14 @@ document.addEventListener("DOMContentLoaded", function () {
     cardsContainer.innerHTML = products
       .map(
         (product) => `
-            <div class="card">
-              <div class="images">
-                <img src="${product.image1}" alt="${product.title}">
-                <img src="${product.image2}" alt="${product.title}">
-              </div>
-              <p>${product.title}</p>
-            </div>
-          `,
+        <div class="card">
+          <div class="images">
+            <img src="${product.image1}" alt="${product.title}">
+            <img src="${product.image2}" alt="${product.title}">
+          </div>
+          <p>${product.title}</p>
+        </div>
+      `,
       )
       .join("");
   }
