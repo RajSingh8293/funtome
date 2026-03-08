@@ -808,17 +808,6 @@
         height: 300px;
       }
 
-      /* .footer .footer-top button {
-        background-color: #888888;
-        border: none;
-        padding: 25px 42px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 18px;
-        font-weight: 600;
-      } */
-
       .footer .footer-top button {
         background-color: rgb(136, 136, 136);
         display: flex;
@@ -981,32 +970,43 @@
       .hero-container {
         background-color: #c5e3c9;
         width: 100%;
-        height: 90vh;
+        min-height: 90vh;
+        height: auto;
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 40px 20px;
       }
 
       .hero-container-detail {
-        width: 60%;
+        width: 100%;
+        max-width: 800px;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        gap: 15px;
-      }
-
-      .hero-container img {
-        height: 200px;
-      }
-
-      .hero-container h1,
-      .hero-container p {
+        gap: 20px;
         text-align: center;
       }
 
+      .hero-container img {
+        height: auto;
+        width: 100%;
+        max-width: 300px;
+        object-fit: contain;
+      }
+
+      .hero-container h1 {
+        font-size: clamp(1.5rem, 4vw, 2.2rem);
+        line-height: 1.4;
+        margin: 0;
+      }
+
       .hero-container p {
-        font-size: 14px;
+        font-size: clamp(13px, 3vw, 16px);
+        line-height: 1.6;
+        margin: 0;
+        max-width: 600px;
       }
 
       .hero-container .state-of-balanace {
@@ -1062,7 +1062,7 @@
       }
 
       .types-table tbody tr {
-        background: #e4e4e4;
+        background: #f8f6ef;
         border-radius: 10px;
       }
 
@@ -1171,7 +1171,8 @@
         cursor: pointer;
         font-size: 1rem;
         text-align: left;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        /* transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); */
+        transition: all 0.3s;
         position: relative;
         overflow: hidden;
       }
@@ -1184,74 +1185,34 @@
         border-radius: 50%;
         background-color: white;
         flex-shrink: 0;
-        transition: transform 0.3s ease;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        border: 1px solid #bbb;
-        transform: scale(0.8);
+        transition: all 0.2s ease;
       }
 
       .option-btn:hover::before {
         transform: scale(0.5);
       }
 
+      /* .option-btn.selected {
+        background: #e6b48c;
+      } */
+
       .option-btn.selected::before {
         content: "" !important;
         display: inline-block !important;
-        width: 16px !important;
-        height: 16px !important;
-        background: transparent !important;
+        width: 24px !important;
+        height: 24px !important;
+        background-color: transparent !important;
         border: none !important;
-        box-shadow: none !important;
         border-radius: 50% !important;
         transform: scale(1) !important;
-        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>') !important;
-        background-size: contain !important;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>') !important;
+        background-size: 16px !important;
         background-position: center !important;
         background-repeat: no-repeat !important;
       }
 
-      .option-btn.selected:hover::before {
-        transform: scale(0.8);
-      }
-
-      @keyframes pulse {
-        0% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.02);
-        }
-        100% {
-          transform: scale(1);
-        }
-      }
-
-      /* .option-btn::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  transform: translate(-50%, -50%);
-  transition:
-    width 0.6s,
-    height 0.6s;
-}
-
-.option-btn:active::after {
-  width: 300px;
-  height: 300px;
-}
-
-.option-btn.selected {
-  animation: pulse 0.3s ease;
-} */
       .option-btn span {
         flex: 1;
-        line-height: 1.4;
       }
 
       .balance-check-des {
@@ -1556,7 +1517,7 @@
         position: relative;
         padding: 20px 25px;
         font-size: 13.5px;
-        background: #e4e4e4;
+        background: #f8f6ef;
         border-radius: 18px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         margin-top: 8px;
@@ -2317,17 +2278,30 @@
         }
 
         .hero-container {
-          padding: 30px 20px;
-          min-height: 40vw;
-        }
-
-        .hero-container img {
-          height: 60vw;
+          min-height: 70vh;
+          padding: 20px 15px;
         }
 
         .hero-container-detail {
-          width: 100%;
-          padding: 0;
+          gap: 12px;
+        }
+
+        .hero-container img {
+          max-width: 200px;
+        }
+
+        .hero-container h1 {
+          font-size: 1.3rem;
+        }
+
+        .hero-container p {
+          font-size: 12px;
+        }
+
+        .btn-2 {
+          padding: 10px 30px;
+          font-size: 15px;
+          margin-top: 15px;
         }
 
         .custom-content {
@@ -2424,6 +2398,29 @@
           width: 40px;
           height: 40px;
           font-size: 18px;
+        }
+      }
+
+      @media (max-width: 360px) {
+        .hero-container {
+          min-height: 60vh;
+        }
+
+        .hero-container img {
+          max-width: 150px;
+        }
+
+        .hero-container h1 {
+          font-size: 1.1rem;
+        }
+
+        .hero-container p {
+          font-size: 11px;
+        }
+
+        .btn-2 {
+          padding: 8px 25px;
+          font-size: 14px;
         }
       }
     </style>
@@ -4210,11 +4207,11 @@
               setTimeout(() => {
                 current++;
                 renderQuestion();
-              }, 150);
+              }, 200);
             } else if (current === 14 && allAnswered) {
               setTimeout(() => {
                 showResult();
-              }, 150);
+              }, 200);
             }
           }
         }
