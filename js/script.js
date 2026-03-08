@@ -271,7 +271,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const btnA = document.getElementById("btn-a");
   const btnB = document.getElementById("btn-b");
   const prevArrow = document.getElementById("prev-arrow");
-  const nextArrow = document.getElementById("next-arrow");
+  const backToStart = document.getElementById("back_to_start");
   const startQ = document.getElementById("start-q");
   const appContainer = document.getElementById("app-container");
   const quizUI = document.getElementById("quiz-ui");
@@ -387,30 +387,24 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function updateNavigationButtons() {
-    if (!prevArrow || !nextArrow) return;
-
-    console.log("Current question:", current);
-    console.log("Answer for current question:", answers[current]);
-
-    if (current === 0) {
-      prevArrow.classList.add("disabled");
-      console.log("Prev button disabled - first question");
-    } else {
-      prevArrow.classList.remove("disabled");
-      console.log("Prev button enabled - can go back");
+    // Handle prev button (1つもどる)
+    if (prevArrow) {
+      if (current === 0) {
+        prevArrow.classList.add("disabled");
+        console.log("Prev button disabled - first question");
+      } else {
+        prevArrow.classList.remove("disabled");
+        console.log("Prev button enabled - can go back");
+      }
     }
 
-    const hasAnswer = answers[current] !== null;
-    if (!hasAnswer) {
-      nextArrow.classList.add("disabled");
-      console.log("Next button disabled - no answer");
-    } else {
-      nextArrow.classList.remove("disabled");
-      console.log("Next button enabled - has answer");
-    }
-
-    if (hasAnswer) {
-      showValidationMessage(false);
+    // Back to start button (はじめにもどる)
+    if (backToStart) {
+      backToStart.classList.remove("disabled");
+      backToStart.disabled = false;
+      backToStart.style.pointerEvents = "auto";
+      backToStart.style.opacity = "1";
+      backToStart.style.cursor = "pointer";
     }
   }
 
@@ -453,13 +447,20 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    if (btnA) btnA.classList.remove("selected");
-    if (btnB) btnB.classList.remove("selected");
+    if (btnA) {
+      if (answers[current] === "a") {
+        btnA.classList.add("selected");
+      } else {
+        btnA.classList.remove("selected");
+      }
+    }
 
-    if (answers[current] === "a" && btnA) {
-      btnA.classList.add("selected");
-    } else if (answers[current] === "b" && btnB) {
-      btnB.classList.add("selected");
+    if (btnB) {
+      if (answers[current] === "b") {
+        btnB.classList.add("selected");
+      } else {
+        btnB.classList.remove("selected");
+      }
     }
 
     updateNavigationButtons();
@@ -492,41 +493,51 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    if (btnA) btnA.classList.toggle("selected", answers[current] === "a");
-    if (btnB) btnB.classList.toggle("selected", answers[current] === "b");
+    if (btnA) {
+      btnA.classList.toggle("selected", answers[current] === "a");
+    }
+    if (btnB) {
+      btnB.classList.toggle("selected", answers[current] === "b");
+    }
 
     updateNavigationButtons();
     updateProgress();
 
     const allAnswered = answers.every((answer) => answer !== null);
 
-    if (answers[current] !== null && current < 14) {
-      current++;
-      renderQuestion();
-    } else if (current === 14 && allAnswered) {
-      showResult();
-    }
-  }
-
-  function goToNext() {
-    if (answers[current] === null) {
-      showValidationMessage(true);
-      return;
-    }
-
-    if (current < 14) {
-      current++;
-      renderQuestion();
-      showValidationMessage(false);
-    } else if (current === 14) {
-      const allAnswered = answers.every((answer) => answer !== null);
-      if (allAnswered) {
-        showResult();
-      } else {
-        showValidationMessage(true);
+    if (answers[current] !== null) {
+      if (current < 14) {
+        setTimeout(() => {
+          current++;
+          renderQuestion();
+        }, 200);
+      } else if (current === 14 && allAnswered) {
+        setTimeout(() => {
+          showResult();
+        }, 200);
       }
     }
   }
+
+  // function goToNext() {
+  //   if (answers[current] === null) {
+  //     showValidationMessage(true);
+  //     return;
+  //   }
+
+  //   if (current < 14) {
+  //     current++;
+  //     renderQuestion();
+  //     showValidationMessage(false);
+  //   } else if (current === 14) {
+  //     const allAnswered = answers.every((answer) => answer !== null);
+  //     if (allAnswered) {
+  //       showResult();
+  //     } else {
+  //       showValidationMessage(true);
+  //     }
+  //   }
+  // }
 
   function goToPrev() {
     if (current > 0) {
@@ -587,8 +598,12 @@ document.addEventListener("DOMContentLoaded", function () {
     prevArrow.addEventListener("click", goToPrev);
   }
 
-  if (nextArrow) {
-    nextArrow.addEventListener("click", goToNext);
+  // BACK TO START BUTTON CLICK HANDLER - Reset quiz to beginning
+  if (backToStart) {
+    backToStart.addEventListener("click", function (e) {
+      e.preventDefault();
+      restartQuizFromResult();
+    });
   }
 
   // ========== PRODUCT CARDS ==========
