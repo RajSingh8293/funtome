@@ -612,30 +612,32 @@ document.addEventListener("DOMContentLoaded", function () {
       id: 1,
       title:
         "トライアルセット 初めてのマイメンテ養生スープセット（スープ全4種）",
-      image1: "./img/p_tea_img_1.webp",
-      image2: "./img/p_tea_img_2.webp",
+      image1: "./img/soup-img.webp",,
+      // image1: "./img/p_tea_img_1.webp",
+      // image2: "./img/p_tea_img_2.webp",
     },
     {
       id: 2,
       title:
         "トライアルセット 初めてのマイメンテ養生スープセット（スープ全4種）",
-      image1: "./img/p_tea_img_2.1.webp",
-      image2: "./img/p_tea_img_2.2.webp",
+      image1: "./img/tea-img.webp",
+      // image1: "./img/p_tea_img_2.1.webp",
+      // image2: "./img/p_tea_img_2.2.webp",
     },
-    {
-      id: 3,
-      title:
-        "トライアルセット 初めてのマイメンテ養生スープセット（スープ全4種）",
-      image1: "./img/p_tea_img_3.1.webp",
-      image2: "./img/p_tea_img_3.2.webp",
-    },
-    {
-      id: 4,
-      title:
-        "トライアルセット 初めてのマイメンテ養生スープセット（スープ全4種）",
-      image1: "./img/p_tea_img_4.1.webp",
-      image2: "./img/p_tea_img_4.2.webp",
-    },
+    // {
+    //   id: 3,
+    //   title:
+    //     "トライアルセット 初めてのマイメンテ養生スープセット（スープ全4種）",
+    //   image1: "./img/p_tea_img_3.1.webp",
+    //   image2: "./img/p_tea_img_3.2.webp",
+    // },
+    // {
+    //   id: 4,
+    //   title:
+    //     "トライアルセット 初めてのマイメンテ養生スープセット（スープ全4種）",
+    //   image1: "./img/p_tea_img_4.1.webp",
+    //   image2: "./img/p_tea_img_4.2.webp",
+    // },
   ];
 
   const cardsContainer = document.getElementById("productCards");
