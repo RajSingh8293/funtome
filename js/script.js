@@ -1,4 +1,98 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const typeData = {
+    type000: {
+      type: "実・寒・湿",
+      image: "./img/type001.webp",
+
+      imageTea: "./img/t_KANSIT_001.webp",
+      imageSoup: "./img/s_JITKAN_001.webp",
+      kekkaHeading:
+        "自律神経の調整不良により体の機能が低下して、<br>余分な水分が溜まりやすくなったタイプ",
+      kekkaBody:
+        "甘いものを控え、血液の流れをよくし、余分な水分を除く働きのある食材をとりましょう。<br>自律神経を整えるGABA、トリプトファンやビタミンD、血行改善と女性ホルモン様作用があるといわれるフェンネルや八角、水を巡らせるハトムギもおすすめです。<br>ウォーキングのような持久性の高い運動で、自律神経を整え、代謝をよくしましょう。<br>また、入浴やハーブティなどでリラックスし、夜は早めに寝て睡眠時間を十分に確保しましょう。",
+    },
+    type001: {
+      type: "実・寒・燥",
+      image: "./img/type002.webp",
+      imageTea: "./img/t_KANSOU_002.webp",
+      imageSoup: "./img/s_JITKAN_002.webp",
+      kekkaHeading:
+        "自律神経の調整不良により末梢血流が良くなく、<br>冷えと乾燥を伴うタイプ",
+      kekkaBody:
+        "過食、冷やす性質の食材を控え、血液の流れをよくする働きのある食材をとりましょう。<br>自律神経を整えるGABA、トリプトファンやビタミンD、血行促進と女性ホルモン様作用があるといわれるフェンネルや八角、うるおす働きのあるクコの実や菊花もおすすめです。<br>スキップなど適度な運動で自律神経を刺激し、血液の巡りをよくしましょう。<br>また、入浴やアロマなどでリラックスし、夜は早めに寝て睡眠時間を十分に確保しましょう。<br>",
+    },
+    type010: {
+      type: "実・熱・湿",
+      image: "./img/type003.webp",
+
+      imageTea: "./img/t_NETSIT_003.webp",
+      imageSoup: "./img/s_JITNET_003.webp",
+      kekkaHeading:
+        "交感神経が高まり、<br>熱と余分な水分が体内に溜まりやすくなったタイプ",
+      kekkaBody:
+        "味の濃いもの、甘いもの、油っこいものを控え、熱を冷まし、余分な水分を除く働きのある食材をとりましょう。<br>交感神経が優位になりすぎるのを抑えるビタミンD、女性ホルモン様作用があるといわれるジャスミンやセージ、水を巡らせるハトムギもおすすめです。<br>ある程度ハードな運動を習慣化し、体内の余分な水分と熱を発散させましょう。<br>また、入浴やハーブティなどでリラックスし、夜は早めに寝て睡眠時間を十分に確保しましょう。",
+    },
+    type011: {
+      type: "実・熱・燥",
+      image: "./img/type004.webp",
+
+      imageTea: "./img/t_NETSOU_004.webp",
+      imageSoup: "./img/s_JITNET_004.webp",
+      kekkaHeading: "交感神経が高まり、<br>熱がこもりやすくなったタイプ",
+      kekkaBody:
+        "アルコール、辛いもの、過食、温める性質の食材を控え、熱を冷まし、うるおす働きのある食材をとりましょう。<br>交感神経が優位になりすぎるのを抑えるビタミンD、女性ホルモン様作用があるといわれるジャスミンやセージ、うるおす働きのあるクコの実や菊花もおすすめです。<br>ある程度ハードな運動を習慣化し、こまめに水分を補給して、カラダにうるおいをプラスしましょう。<br>また、入浴やアロマなどでリラックスし、夜は早めに寝て睡眠時間を十分に確保しましょう。",
+    },
+    type100: {
+      type: "虚・寒・湿",
+      image: "./img/type005.webp",
+
+      imageTea: "./img/t_KANSIT_005.webp",
+      imageSoup: "./img/s_KYOKAN_005.webp",
+      kekkaHeading:
+        "エネルギー不足と自律神経の調整不良により<br>体の機能が低下し、余分な水分が留まりやすくなったタイプ",
+      kekkaBody:
+        "栄養バランスの良い食事を心がけ、冷やす性質の食材を控え、活動力を高め余分な水分を除く働きのある食材をとりましょう。<br>滋養とホルモンバランスを整えるレバー（ビタミンD・亜鉛）やなつめ、温めるシナモンやバジル、水を巡らせるハトムギもおすすめです。<br>軽い運動とリンパマッサージなどで水分の巡りをよくし、ゆっくりとした入浴で体を温め、良質な睡眠をとりましょう。",
+    },
+    type101: {
+      type: "虚・寒・燥",
+      image: "./img/type006.webp",
+
+      imageTea: "./img/t_KANSOU_006.webp",
+      imageSoup: "./img/s_KYOKAN_006.webp",
+      kekkaHeading:
+        "エネルギー不足と自律神経の調整不良により<br>末梢血流が良くなく、冷えと乾燥を伴うタイプ",
+      kekkaBody:
+        "栄養バランスの良い食事を心がけ、冷やす性質の食材を控え、活動力を高める働きのある食材をとりましょう。<br>滋養とホルモンバランスを整える牡蠣（ミネラル）や白キクラゲ（ビタミンD）、温めるシナモンやバジル、うるおす働きのあるクコの実や菊花もおすすめです。<br>軽い運動で血液の巡りをよくし、日中には日光浴で体を整え、良質な睡眠をとりましょう。<br>また、入浴で身体を温め、疲労回復、血行促進を。就寝1.5時間前の入浴は、睡眠の質を高めます。",
+    },
+    type110: {
+      type: "虚・熱・湿",
+      image: "./img/type007.webp",
+
+      imageTea: "./img/t_NETSIT_007.webp",
+      imageSoup: "./img/s_KYONET_007.webp",
+      kekkaHeading:
+        "エネルギー不足と交感神経が高まり、<br>熱と余分な水分が体に溜まりやすくなったタイプ",
+      kekkaBody:
+        "栄養バランスの良い食事を心がけ、温める性質の食材を控え、熱を冷まし、余分な水分を除く働きのある食材をとりましょう。<br>滋養とホルモンバランスを整えるレバー（ビタミンD・亜鉛）やなつめ、熱を冷ますペパーミントやオレンジ、水を巡らせるハトムギもおすすめです。<br>睡眠不足、運動不足に気をつけ、ヨーグルトや健康茶などで水の巡りをよくしましょう。<br>また、運動などで汗をかいて、体に溜まった余分な水分や老廃物を排出しましょう。",
+    },
+    type111: {
+      type: "虚・熱・燥",
+      image: "./img/type008.webp",
+
+      imageTea: "./img/t_NETSOU_008.webp",
+      imageSoup: "./img/s_KYONET_008.webp",
+      kekkaHeading:
+        "エネルギー不足と交感神経が高まり、<br>熱がこもりやすくなったタイプ",
+      kekkaBody:
+        "栄養バランスの良い食事を心がけ、温める性質の食材を控え、熱を冷まし、うるおす働きのある食材をとりましょう。<br>滋養とホルモンバランスを整える牡蠣（ミネラル）や白きくらげ（ビタミンD）、熱を冷ますペパーミントやオレンジ、うるおす働きのあるクコの実や菊花もおすすめです。<br>睡眠不足、運動不足に気をつけ、タンパク質などの栄養豊富な牛乳やヨーグルトなどをとるようにしましょう。<br>また、運動をして汗をかいた後には、水分補給を忘れずに。",
+    },
+  };
+
+  const typeDataMap = {};
+  Object.values(typeData).forEach((item) => {
+    typeDataMap[item.type] = item;
+  });
+
   // Helper function to scroll to top
   function scrollToTop() {
     window.scrollTo({
@@ -254,17 +348,6 @@ document.addEventListener("DOMContentLoaded", function () {
   let scores = { energy: 0, temp: 0, moist: 0 };
   let answers = new Array(15).fill(null);
 
-  const imageMap = {
-    "実・熱・燥": "./img/type_1.webp",
-    "虚・熱・燥": "./img/type_2.webp",
-    "虚・寒・燥": "./img/type_3.webp",
-    "虚・寒・湿": "./img/type_4.webp",
-    "実・寒・湿": "./img/type_5.webp",
-    "実・熱・湿": "./img/type_6.webp",
-    "実・寒・燥": "./img/type_7.webp",
-    "虚・熱・湿": "./img/type_8.png",
-  };
-
   const startBtn = document.getElementById("start-btn");
   const startBtn2 = document.getElementById("start-btn-2");
   const restartQuiz = document.getElementById("restart-quiz");
@@ -277,15 +360,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const quizUI = document.getElementById("quiz-ui");
   const resultUI = document.getElementById("result-ui");
   const validationMsg = document.getElementById("validation-message");
-  const qCount = document.getElementById("q-count");
   const qNumber = document.getElementById("q-number");
   const progressFill = document.getElementById("progress-fill");
   const questionTitle = document.getElementById("question-title");
   const resultImage = document.getElementById("result-image");
-  const typeBadge = document.querySelector(".type-badge");
+  const typeBadge = document.getElementById("result-type-badge");
+  const resultHeading = document.getElementById("result-heading");
+  const resultBody = document.getElementById("result-body");
   const pageLoader = document.getElementById("pageLoader");
-  const answerProgress = document.getElementById("answer-progress");
   const currentQuestion = document.getElementById("current-question");
+  const productCards = document.getElementById("productCards");
 
   if (pageLoader) {
     setTimeout(function () {
@@ -391,10 +475,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (prevArrow) {
       if (current === 0) {
         prevArrow.classList.add("disabled");
-        console.log("Prev button disabled - first question");
       } else {
         prevArrow.classList.remove("disabled");
-        console.log("Prev button enabled - can go back");
       }
     }
 
@@ -519,26 +601,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // function goToNext() {
-  //   if (answers[current] === null) {
-  //     showValidationMessage(true);
-  //     return;
-  //   }
-
-  //   if (current < 14) {
-  //     current++;
-  //     renderQuestion();
-  //     showValidationMessage(false);
-  //   } else if (current === 14) {
-  //     const allAnswered = answers.every((answer) => answer !== null);
-  //     if (allAnswered) {
-  //       showResult();
-  //     } else {
-  //       showValidationMessage(true);
-  //     }
-  //   }
-  // }
-
   function goToPrev() {
     if (current > 0) {
       current--;
@@ -565,20 +627,57 @@ document.addEventListener("DOMContentLoaded", function () {
     const m = scores.moist > 0 ? "湿" : scores.moist < 0 ? "燥" : "湿";
 
     const combination = `${e}・${t}・${m}`;
+    console.log("Diagnosed type:", combination);
 
-    if (typeBadge) {
-      typeBadge.innerHTML = `
-      <span class="type-item">${e}</span>
-      <span class="type-item">${t}</span>
-      <span class="type-item">${m}</span>
-      <span class="type-item">タイプ</span>
-    `;
-    }
+    const typeInfo = typeDataMap[combination];
 
-    if (resultImage) {
-      const imagePath = imageMap[combination] || "./img/type_1.webp";
-      resultImage.src = imagePath;
-      resultImage.alt = combination;
+    if (typeInfo) {
+      if (typeBadge) {
+        typeBadge.innerHTML = `
+                <span class="type-item">${e}</span>
+                <span class="type-item">${t}</span>
+                <span class="type-item">${m}</span>
+                <span class="type-item">タイプ</span>
+              `;
+      }
+
+      if (resultImage) {
+        resultImage.src = typeInfo.image;
+        resultImage.alt = combination;
+      }
+
+      if (resultHeading) {
+        resultHeading.innerHTML = typeInfo.kekkaHeading;
+      }
+
+      if (resultBody) {
+        resultBody.innerHTML = typeInfo.kekkaBody;
+      }
+
+      if (productCards) {
+        productCards.innerHTML = `
+                <div class="card">
+                  <div class="images">
+                    <img src="${typeInfo.imageTea}" alt="おすすめのお茶">
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="images">
+                    <img src="${typeInfo.imageSoup}" alt="おすすめのスープ">
+                  </div>
+                </div>
+              `;
+      }
+    } else {
+      console.error("Type data not found for:", combination);
+      if (typeBadge) {
+        typeBadge.innerHTML = `
+                <span class="type-item">${e}</span>
+                <span class="type-item">${t}</span>
+                <span class="type-item">${m}</span>
+                <span class="type-item">タイプ</span>
+              `;
+      }
     }
   }
 
@@ -598,63 +697,10 @@ document.addEventListener("DOMContentLoaded", function () {
     prevArrow.addEventListener("click", goToPrev);
   }
 
-  // BACK TO START BUTTON CLICK HANDLER - Reset quiz to beginning
   if (backToStart) {
     backToStart.addEventListener("click", function (e) {
       e.preventDefault();
       restartQuizFromResult();
     });
-  }
-
-  // ========== PRODUCT CARDS ==========
-  const products = [
-    {
-      id: 1,
-      title:
-        "トライアルセット 初めてのマイメンテ養生スープセット（スープ全4種）",
-      image1: "./img/soup-img.webp",,
-      // image1: "./img/p_tea_img_1.webp",
-      // image2: "./img/p_tea_img_2.webp",
-    },
-    {
-      id: 2,
-      title:
-        "トライアルセット 初めてのマイメンテ養生スープセット（スープ全4種）",
-      image1: "./img/tea-img.webp",
-      // image1: "./img/p_tea_img_2.1.webp",
-      // image2: "./img/p_tea_img_2.2.webp",
-    },
-    // {
-    //   id: 3,
-    //   title:
-    //     "トライアルセット 初めてのマイメンテ養生スープセット（スープ全4種）",
-    //   image1: "./img/p_tea_img_3.1.webp",
-    //   image2: "./img/p_tea_img_3.2.webp",
-    // },
-    // {
-    //   id: 4,
-    //   title:
-    //     "トライアルセット 初めてのマイメンテ養生スープセット（スープ全4種）",
-    //   image1: "./img/p_tea_img_4.1.webp",
-    //   image2: "./img/p_tea_img_4.2.webp",
-    // },
-  ];
-
-  const cardsContainer = document.getElementById("productCards");
-
-  if (cardsContainer) {
-    cardsContainer.innerHTML = products
-      .map(
-        (product) => `
-        <div class="card">
-          <div class="images">
-            <img src="${product.image1}" alt="${product.title}">
-            <img src="${product.image2}" alt="${product.title}">
-          </div>
-          <p>${product.title}</p>
-        </div>
-      `,
-      )
-      .join("");
   }
 });

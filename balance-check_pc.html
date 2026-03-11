@@ -231,7 +231,6 @@
           </div>
         </nav>
 
-        <!-- Popular Tags -->
         <div class="sidebar-tags">
           <h3 class="sidebar-tags-title">人気のキーワード</h3>
           <div class="tags-container">
@@ -422,7 +421,7 @@
               <img id="result-image" src="" alt="診断結果画像" />
             </div>
             <div class="chat-container">
-              <div class="type-badge">
+              <div class="type-badge" id="result-type-badge">
                 <span class="type-item">実</span>
                 <span class="type-item">熱</span>
                 <span class="type-item">燥</span>
@@ -432,11 +431,11 @@
 
               <div class="message-container">
                 <div class="message-bubble">
-                  <h2 class="message-text">
+                  <h2 class="message-text" id="result-heading">
                     自律神経の調整不良により体の機能が低下して、<br />
                     余分な水分が溜まりやすくなったタイプ
                   </h2>
-                  <p>
+                  <p id="result-body">
                     甘いものを控え、血液の流れをよくし、余分な水分を除く働きのある食材をとりましょう。<br />
                     自律神経を整えるGABA、トリプトファンやビタミンD、血行改善と女性ホルモン様作用があるといわれるフェンネルや八角、水を巡らせるハトムギもおすすめです。
                     ウォーキングのような持久性の高い運動で、自律神経を整え、代謝をよくしましょう。
@@ -447,10 +446,6 @@
             </div>
           </div>
 
-          <!-- <a href="#" class="brand-page-btn" id="brand-page-btn">
-            FantoMe ブランドページへ
-          </a> -->
-
           <div class="related-products">
             <div class="related-heading">
               <h1>おすすめ商品</h1>
@@ -458,18 +453,9 @@
             <div class="cards" id="productCards"></div>
           </div>
 
-          <!-- <div class="restart-container">
-            <button class="funtome-brand-btn" id="">
-              <a href="funtome-html">ファントゥーミーブランドページへ</a>
-            </button>
-            <button class=" btn restart-funtome-btn" id="restart-quiz">
-              <span>はじめからやり直す</span>
-            </button>
-          </div> -->
-
           <div class="restart-container">
             <button class="btn funtome-brand-btn" id="">
-              <a href=" funtome-html">ファントゥーミーブランドページへ</a>
+              <a href="funtome-html">ファントゥーミーブランドページへ</a>
             </button>
             <button class="btn restart-quiz-btn" id="restart-quiz">
               <span>はじめからやり直す</span>
